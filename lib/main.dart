@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:meter/pages/home.dart';
 import 'package:meter/pages/email.dart';
+import 'package:meter/pages/confirm-email.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: {'/': (_) => MyHomePage(), '/email': (_) => EmailPage()},
+      routes: {
+        '/': (_) => MyHomePage(),
+        '/email': (_) => EmailPage(),
+        '/confirm-email': (_) => ConfirmEmailPage()
+      },
     );
   }
 }
