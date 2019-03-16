@@ -1,4 +1,4 @@
-package com.example.dragon;
+package com.example.meter;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
