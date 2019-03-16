@@ -17,11 +17,12 @@ class MyHomePage extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: 50.0),
             child: RaisedButton(
+              onPressed: () => {Navigator.pushNamed(context, '/email')},
               child: Text('Continue with email'),
             ),
           )
         ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
