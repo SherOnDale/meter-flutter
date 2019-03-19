@@ -12,8 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Meter',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          fontFamily: 'Gilroy',
+          backgroundColor: Colors.white,
+          scaffoldBackgroundColor: Colors.white,
+          buttonColor: Color(0xff0BB1A1),
+          disabledColor: Color(0xffBFC5D0)),
       routes: {
         '/': (_) => MyHomePage(),
         '/email': (_) => EmailPage(),

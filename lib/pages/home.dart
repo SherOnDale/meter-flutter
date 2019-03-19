@@ -1,26 +1,54 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 2), () => {Navigator.pushNamed(context, '/email')});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            height: 1,
-          ),
           Center(
-            child: Text('A Revolution Backed by Energy'),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 50.0),
-            child: RaisedButton(
-              onPressed: () => {Navigator.pushNamed(context, '/email')},
-              child: Text('Continue with email'),
-            ),
-          )
+              child: Column(
+            children: <Widget>[
+              SvgPicture.asset(
+                'assets/images/logo.svg',
+                height: 100.0,
+                allowDrawingOutsideViewBox: true,
+              ),
+              Text(
+                'Meter',
+                style: TextStyle(
+                    fontSize: 35.0, fontWeight: FontWeight.w800, height: 2.5),
+              ),
+              Text(
+                'A Revolution Backed by Energy',
+                style: TextStyle(
+                    fontSize: 20.0, fontWeight: FontWeight.w800, height: 1.7),
+              ),
+              Text(
+                'Stable, Fast, Secured, Scalable, Investor',
+                style: TextStyle(
+                    fontSize: 13.0, fontWeight: FontWeight.w200, height: 2),
+              ),
+              Text('Protection',
+                  style:
+                      TextStyle(fontSize: 13.0, fontWeight: FontWeight.w200)),
+            ],
+          ))
         ],
       ),
     );
