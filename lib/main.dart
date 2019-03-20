@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 
-import 'package:meter/pages/home.dart';
-import 'package:meter/pages/email.dart';
-import 'package:meter/pages/confirm-email.dart';
+import 'package:meter/routes/application.dart';
+import 'package:meter/routes/index.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final router = new Router();
+    Routes.configureRoutes(router);
+    Application.router = router;
     return MaterialApp(
       title: 'Meter',
       theme: ThemeData(
@@ -18,11 +21,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           buttonColor: Color(0xff0BB1A1),
           disabledColor: Color(0xffBFC5D0)),
-      routes: {
-        '/': (_) => MyHomePage(),
-        '/email': (_) => EmailPage(),
-        '/confirm-email': (_) => ConfirmEmailPage()
-      },
+      onGenerateRoute: Application.router.generator,
     );
   }
 }
