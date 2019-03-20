@@ -8,10 +8,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Timer timer;
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), () => {Navigator.pushNamed(context, '/email')});
+    startTimer();
+  }
+
+  startTimer() {
+    timer = Timer.periodic(Duration(seconds: 2), (t) {
+      t.cancel();
+      Navigator.pushNamed(context, '/email').then((value) {
+        if (value) {
+          startTimer();
+        }
+      });
+    });
   }
 
   @override
