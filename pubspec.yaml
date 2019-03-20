@@ -46,7 +46,15 @@ flutter:
     - assets/images/left-arrow.svg
     - assets/images/tiny-logo.svg
     - assets/images/email-open.svg
+    - assets/images/email-new.svg
     - assets/images/pfp-placeholder.svg
+    - assets/images/google.svg
+    - assets/images/fb.svg
+    - assets/images/linkedin.svg
+    - assets/images/close.svg
+    - assets/images/inbox.svg
+    - assets/images/unchecked.svg
+    - assets/images/checked.svg
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg

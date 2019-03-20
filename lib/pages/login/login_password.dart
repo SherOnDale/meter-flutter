@@ -5,16 +5,14 @@ import 'dart:async';
 import 'package:meter/routes/application.dart';
 import 'package:meter/routes/index.dart';
 
-class EmailPage extends StatefulWidget {
+class LoginPassword extends StatefulWidget {
   @override
-  _EmailPageState createState() => _EmailPageState();
+  _LoginPasswordState createState() => _LoginPasswordState();
 }
 
-class _EmailPageState extends State<EmailPage> {
-  TextEditingController emailController = TextEditingController();
+class _LoginPasswordState extends State<LoginPassword> {
+  TextEditingController passwordController = TextEditingController();
   StreamController<bool> streamController;
-  Pattern emailPattern;
-  RegExp emailRegex;
   @override
   void dispose() {
     super.dispose();
@@ -25,11 +23,9 @@ class _EmailPageState extends State<EmailPage> {
   void initState() {
     super.initState();
     streamController = StreamController<bool>.broadcast();
-    emailPattern = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
-    emailRegex =RegExp(emailPattern);
-    emailController
+    passwordController
       ..addListener(() {
-        if (emailRegex.hasMatch(emailController.text.trim())) {
+        if (passwordController.text.isNotEmpty) {
           streamController.sink.add(true);
         } else {
           streamController.sink.add(false);
@@ -37,12 +33,11 @@ class _EmailPageState extends State<EmailPage> {
       });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Application.router.navigateTo(context, Routes.root, clearStack: true);
+        Application.router.pop(context);
       },
       child: Scaffold(
         appBar: AppBar(
@@ -51,8 +46,7 @@ class _EmailPageState extends State<EmailPage> {
           leading: IconButton(
             icon: SvgPicture.asset('assets/images/left-arrow.svg'),
             onPressed: () {
-              Application.router
-                  .navigateTo(context, Routes.root, clearStack: true);
+              Application.router.pop(context);
             },
           ),
           title: SvgPicture.asset('assets/images/tiny-logo.svg'),
@@ -65,42 +59,49 @@ class _EmailPageState extends State<EmailPage> {
             shrinkWrap: true,
             children: <Widget>[
               Text(
-                'What\'s your Email?',
+                'What\'s your Password?',
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w800),
               ),
               SizedBox(
                 height: 10.0,
               ),
               Text(
-                'We need it to lookup your Account or create a new one.',
+                'Your Accoutn is already existed. Please, enter your Password.',
                 style: TextStyle(
                   fontSize: 15.0,
+                  height: 1.5
                 ),
               ),
               SizedBox(
                 height: 30.0,
               ),
               TextFormField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
+                controller: passwordController,
+                obscureText: true,
                 style: TextStyle(fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
-                  labelText: 'Email Address',
+                  labelText: 'Password',
                   labelStyle: TextStyle(color: Color(0xff8D93A9)),
-                  hintStyle:
-                      TextStyle(color: Theme.of(context).disabledColor),
+                  suffix: GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      'Forgot?',
+                      style:
+                          TextStyle(color: Color(0xff0B78FF), fontSize: 12.0),
+                    ),
+                  ),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color(0xffDDE1EB), width: 1.0)),
+                      borderSide:
+                          BorderSide(color: Color(0xffDDE1EB), width: 1.0)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color(0xffDDE1EB), width: 1.0)),
+                      borderSide:
+                          BorderSide(color: Color(0xffDDE1EB), width: 1.0)),
                   focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color(0xffDDE1EB), width: 1.0)),
+                      borderSide:
+                          BorderSide(color: Color(0xffDDE1EB), width: 1.0)),
                   errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color(0xffDDE1EB), width: 1.0)),
+                      borderSide:
+                          BorderSide(color: Color(0xffDDE1EB), width: 1.0)),
                 ),
               ),
               SizedBox(
@@ -109,8 +110,7 @@ class _EmailPageState extends State<EmailPage> {
               StreamBuilder(
                 stream: streamController.stream,
                 initialData: false,
-                builder:
-                    (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
                   return SizedBox(
                     width: double.infinity,
                     height: 50.0,
@@ -119,24 +119,13 @@ class _EmailPageState extends State<EmailPage> {
                       disabledTextColor: Colors.white,
                       onPressed: snapshot.data
                           ? () {
-                            FocusScope.of(context).requestFocus(FocusNode());
-                            if(emailController.text.trim() == 'sample@test.com'){
-                               Application.router.navigateTo(
-                                  context,
-                                  Routes.loginPassword);
-                                return;
-                            }
+                              FocusScope.of(context).requestFocus(FocusNode());
                               Application.router.navigateTo(
                                   context,
-                                  Routes.noAccountExists +
-                                      "?email_id=" +
-                                      emailController.text.toString());
+                                  Routes.waitingPage);
                             }
                           : null,
-                      child: Text('Continue',style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
+                      child: Text('Login'),
                     ),
                   );
                 },
