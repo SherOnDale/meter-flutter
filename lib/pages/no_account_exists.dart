@@ -85,7 +85,7 @@ class _NoAccountExistsState extends State<NoAccountExists> {
                     Application.router.navigateTo(context,
                         Routes.confirmEmail + "?email_id=" + widget.emailID);
                   },
-                  child: Text('Creat an Account'),
+                  child: Text('Create an Account'),
                 ),
               )
             ],

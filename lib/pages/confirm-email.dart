@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:meter/routes/application.dart';
 import 'package:meter/routes/index.dart';
@@ -13,6 +14,13 @@ class ConfirmEmailPage extends StatefulWidget {
 }
 
 class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
+
+  void emailOpen() async {
+  var emailUrl = "mailto:";
+  if(await canLaunch(emailUrl))
+      launch(emailUrl);
+}
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -29,31 +37,33 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
               ),
               Container(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        child: Text(
-                          "Confirm your Email Address to", textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Container(
-                        child: Text(
-                          "Create an Account.",textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
-                  )),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      "Confirm your Email Address to",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Container(
+                    child: Text(
+                      "Create an Account.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )),
               SizedBox(
                 height: 50.0,
               ),
@@ -103,7 +113,7 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                   borderRadius: BorderRadius.circular(2.0),
                 ),
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: emailOpen,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40.0),
                     child: Text(
@@ -120,8 +130,14 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                 height: 30.0,
               ),
               Container(
-                child: Text("Skip, I’ll Confirm later",
-                    style: TextStyle(fontSize: 14.0, color: Color(0xff54A0FF))),
+                child: GestureDetector(
+                  onTap: () {
+                    Application.router.navigateTo(context, Routes.details);
+                  },
+                  child: Text("Skip, I’ll Confirm later",
+                      style:
+                          TextStyle(fontSize: 14.0, color: Color(0xff54A0FF))),
+                ),
               ),
               Expanded(
                 child: SafeArea(
@@ -156,11 +172,17 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                               ),
                               Expanded(
                                 child: Container(
-                                  child: Text('Try another Email',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 12.0,
-                                          color: Color(0xff5AA4FF))),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Application.router
+                                          .navigateTo(context, Routes.email);
+                                    },
+                                    child: Text('Try another Email',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 12.0,
+                                            color: Color(0xff5AA4FF))),
+                                  ),
                                 ),
                               )
                             ],
