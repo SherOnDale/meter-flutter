@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:flutter/services.dart';
 
 import 'package:meter/routes/application.dart';
 import 'package:meter/routes/index.dart';
@@ -12,6 +13,10 @@ class MyApp extends StatelessWidget {
     final router = new Router();
     Routes.configureRoutes(router);
     Application.router = router;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       title: 'Meter',
       theme: ThemeData(

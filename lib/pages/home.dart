@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // Navigator.pushNamed(context, '/email').then((value) {
       //   startTimer();
       // });
-      Application.router.navigateTo(context, Routes.email).then((value){
+      Application.router.navigateTo(context, Routes.email).then((value) {
         startTimer();
       });
     });
