@@ -10,6 +10,10 @@ class Routes {
   static String details = "/details";
   static String picture = "/picture";
   static String password = "/password";
+  static String loginPassword = "/login_password";
+  static String waitingPage = "/waiting_page";
+  static String socialList = "/social_list";
+  static String connectionList = "/connection_list";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = new Handler(
@@ -23,5 +27,9 @@ class Routes {
     router.define(details, handler: detailsHandler);
     router.define(picture, handler: pictureHandler);
     router.define(password, handler: passwordHandler);
+    router.define(loginPassword, handler: loginPasswordHandler);
+    router.define(waitingPage, handler: waitingPageHandler);
+    router.define(socialList, handler: socialListHandler);
+    router.define(connectionList, handler: connectionListHandler);
   }
 }

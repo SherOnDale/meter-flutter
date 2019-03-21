@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:async';
 
 import 'package:meter/routes/application.dart';
+import 'package:meter/routes/index.dart';
 
 class Password extends StatefulWidget {
   @override
@@ -145,6 +146,9 @@ class _PasswordState extends State<Password> {
                       disabledTextColor: Colors.white,
                       onPressed: snapshot.data ? () {
                         FocusScope.of(context).requestFocus(FocusNode());
+                        Application.router.navigateTo(
+                                  context,
+                                  Routes.waitingPage);
                       } : null,
                       child: Text('Create an Account',
                           style: TextStyle(
