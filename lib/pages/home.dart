@@ -38,39 +38,40 @@ class _MyHomePageState extends State<MyHomePage> {
         exit(0);
       },
       child: Scaffold(
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Center(
-                child: Column(
-              children: <Widget>[
-                SvgPicture.asset(
-                  'assets/images/logo.svg',
-                  height: 100.0,
-                  allowDrawingOutsideViewBox: true,
-                ),
-                Text(
-                  'Meter',
-                  style: TextStyle(
-                      fontSize: 35.0, fontWeight: FontWeight.w800, height: 2.5),
-                ),
-                Text(
-                  'A Revolution Backed by Energy',
-                  style: TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.w800, height: 1.7),
-                ),
-                Text(
-                  'Stable, Fast, Secured, Scalable, Investor',
-                  style: TextStyle(
-                      fontSize: 13.0, fontWeight: FontWeight.w200, height: 2),
-                ),
-                Text('Protection',
-                    style:
-                        TextStyle(fontSize: 13.0, fontWeight: FontWeight.w200)),
-              ],
-            ))
-          ],
+        body: Center(
+          child: ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              Center(
+                  child: Column(
+                children: <Widget>[
+                  SvgPicture.asset(
+                    'assets/images/logo.svg',
+                    height: 100.0,
+                    allowDrawingOutsideViewBox: true,
+                  ),
+                  Text(
+                    'Meter',
+                    style: TextStyle(
+                        fontSize: 35.0, fontWeight: FontWeight.w800, height: 2.5),
+                  ),
+                  Text(
+                    'A Revolution Backed by Energy',
+                    style: TextStyle(
+                        fontSize: 20.0, fontWeight: FontWeight.w800, height: 1.7),
+                  ),
+                  Text(
+                    'Stable, Fast, Secured, Scalable, Investor',
+                    style: TextStyle(
+                        fontSize: 13.0, fontWeight: FontWeight.w200, height: 2),
+                  ),
+                  Text('Protection',
+                      style:
+                          TextStyle(fontSize: 13.0, fontWeight: FontWeight.w200)),
+                ],
+              ))
+            ],
+          ),
         ),
       ),
     );

@@ -45,8 +45,8 @@ class _NoAccountExistsState extends State<NoAccountExists> {
         body: Container(
           padding: EdgeInsets.all(20.0),
           margin: EdgeInsets.only(top: 30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+            shrinkWrap: true,
             children: <Widget>[
               Text(
                 'Oops!!',
