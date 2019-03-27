@@ -13,7 +13,6 @@ class WaitingPage extends StatefulWidget {
 }
 
 class _WaitingPageState extends State<WaitingPage> {
-  
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -71,9 +70,7 @@ class _WaitingPageState extends State<WaitingPage> {
                     'people who invite will move up higher on the list to recieve and test the wallet and other new features',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 15.0,
-                        color: Color(0xff8D93A9),
-                        height: 1.5),
+                        fontSize: 15.0, color: Color(0xff8D93A9), height: 1.5),
                   ),
                 ),
                 SizedBox(
@@ -85,10 +82,7 @@ class _WaitingPageState extends State<WaitingPage> {
                     borderRadius: BorderRadius.circular(2.0),
                   ),
                   child: RaisedButton(
-                    onPressed: () {
-                      Application.router
-                          .navigateTo(context, Routes.socialList);
-                    },
+                    onPressed: () {},
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 100.0),
                       child: Text(

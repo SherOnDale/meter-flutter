@@ -129,7 +129,8 @@ class _PasswordState extends State<Password> {
               Container(
                   child: Text(
                 'Password must be minimum of 8 character with atleast 1 Uppercase , 1 lowercase and 1 digit',
-                style: TextStyle(color: Color(0xff8D93A9), fontSize: 12.0,height: 1.2),
+                style: TextStyle(
+                    color: Color(0xff8D93A9), fontSize: 12.0, height: 1.2),
               )),
               SizedBox(
                 height: 25.0,
@@ -144,12 +145,13 @@ class _PasswordState extends State<Password> {
                     child: RaisedButton(
                       textColor: Colors.white,
                       disabledTextColor: Colors.white,
-                      onPressed: snapshot.data ? () {
-                        FocusScope.of(context).requestFocus(FocusNode());
-                        Application.router.navigateTo(
-                                  context,
-                                  Routes.waitingPage);
-                      } : null,
+                      onPressed: snapshot.data
+                          ? () {
+                              FocusScope.of(context).requestFocus(FocusNode());
+                              Application.router
+                                  .navigateTo(context, Routes.socialList);
+                            }
+                          : null,
                       child: Text('Create an Account',
                           style: TextStyle(
                               fontSize: 14.0,
@@ -166,35 +168,34 @@ class _PasswordState extends State<Password> {
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: RichText(
                   textAlign: TextAlign.center,
-                  text: TextSpan(
-                    style: TextStyle(height: 1.2),
-                    children: [
-                      TextSpan(
+                  text: TextSpan(style: TextStyle(height: 1.2), children: [
+                    TextSpan(
                         text: 'by using ',
-                        style: TextStyle(color: Color(0xff8D93A9),fontSize: 12.0)
-                      ),
-                      TextSpan(
+                        style: TextStyle(
+                            color: Color(0xff8D93A9), fontSize: 12.0)),
+                    TextSpan(
                         text: 'Meter ',
-                        style: TextStyle(color: Color(0xff8D93A9),fontSize: 12.0,fontWeight: FontWeight.bold)
-                      ),
-                      TextSpan(
+                        style: TextStyle(
+                            color: Color(0xff8D93A9),
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold)),
+                    TextSpan(
                         text: 'you must agree to Our ',
-                        style: TextStyle(color: Color(0xff8D93A9),fontSize: 12.0)
-                      ),
-                      TextSpan(
+                        style: TextStyle(
+                            color: Color(0xff8D93A9), fontSize: 12.0)),
+                    TextSpan(
                         text: 'Terms & Condition ',
-                        style: TextStyle(color: Color(0xff0B78FF),fontSize: 12.0)
-                      ),
-                      TextSpan(
+                        style: TextStyle(
+                            color: Color(0xff0B78FF), fontSize: 12.0)),
+                    TextSpan(
                         text: 'and ',
-                        style: TextStyle(color: Color(0xff8D93A9),fontSize: 12.0)
-                      ),
-                      TextSpan(
+                        style: TextStyle(
+                            color: Color(0xff8D93A9), fontSize: 12.0)),
+                    TextSpan(
                         text: 'Privacy Policy',
-                        style: TextStyle(color: Color(0xff0B78FF),fontSize: 12.0)
-                      )
-                    ]
-                  ),
+                        style:
+                            TextStyle(color: Color(0xff0B78FF), fontSize: 12.0))
+                  ]),
                 ),
               )
             ],

@@ -9,7 +9,7 @@ class SocialList extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Application.router.pop(context);
+        Application.router.navigateTo(context, Routes.waitingPage);
       },
       child: Scaffold(
         appBar: AppBar(
@@ -18,7 +18,7 @@ class SocialList extends StatelessWidget {
           leading: IconButton(
             icon: SvgPicture.asset('assets/images/close.svg'),
             onPressed: () {
-              Application.router.pop(context);
+              Application.router.navigateTo(context, Routes.waitingPage);
             },
           ),
           title: Text(
