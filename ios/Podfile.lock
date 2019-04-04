@@ -2,28 +2,44 @@ PODS:
   - contacts_service (0.2.1):
     - Flutter
   - Flutter (1.0.0)
+  - image_cropper (0.0.1):
+    - Flutter
+    - TOCropViewController (~> 2.3.8)
+  - image_picker (0.0.1):
+    - Flutter
   - path_provider (0.0.1):
     - Flutter
   - permission_handler (2.2.0):
     - Flutter
   - share_extend (0.0.1):
     - Flutter
+  - TOCropViewController (2.3.8)
   - url_launcher (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - contacts_service (from `.symlinks/plugins/contacts_service/ios`)
   - Flutter (from `.symlinks/flutter/ios`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - share_extend (from `.symlinks/plugins/share_extend/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - TOCropViewController
 
 EXTERNAL SOURCES:
   contacts_service:
     :path: ".symlinks/plugins/contacts_service/ios"
   Flutter:
     :path: ".symlinks/flutter/ios"
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   permission_handler:
@@ -36,9 +52,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   contacts_service: 64ebf2a313b34bff0acf668efac52ae402ba9be0
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  image_cropper: 189eec25d148f56694f670438e9458323ba2880a
+  image_picker: a211f28b95a560433c00f5cd3773f4710a20404d
   path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
   permission_handler: 976a8a94c3443d23fe33c11e98277d471f0e543d
   share_extend: b6748dc53695587891126a89533b862b92548c7b
+  TOCropViewController: 0a075f02c253e88095143bbac7b013fc6fba5090
   url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
 
 PODFILE CHECKSUM: ebd43b443038e611b86ede96e613bd6033c49497

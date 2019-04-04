@@ -14,12 +14,10 @@ class ConfirmEmailPage extends StatefulWidget {
 }
 
 class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
-
   void emailOpen() async {
-  var emailUrl = "mailto:";
-  if(await canLaunch(emailUrl))
-      launch(emailUrl);
-}
+    var emailUrl = "mailto:";
+    if (await canLaunch(emailUrl)) launch(emailUrl);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -28,6 +28,8 @@ dependencies:
   url_launcher:
   contacts_service:
   permission_handler: '^2.2.0'
+  image_picker:
+  image_cropper: ^1.0.0
 
 dev_dependencies:
   flutter_test:

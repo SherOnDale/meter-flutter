@@ -5,6 +5,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
 import 'package:meter/routes/application.dart';
+import 'package:meter/routes/index.dart';
 
 class ConnectionList extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _ConnectionListState extends State<ConnectionList> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Application.router.pop(context);
+        Application.router.navigateTo(context, Routes.waitingPage);
       },
       child: Scaffold(
         appBar: AppBar(
@@ -41,7 +42,7 @@ class _ConnectionListState extends State<ConnectionList> {
           leading: IconButton(
             icon: SvgPicture.asset('assets/images/inbox.svg'),
             onPressed: () {
-              Application.router.pop(context);
+              Application.router.navigateTo(context, Routes.waitingPage);
             },
           ),
           title: Container(
@@ -68,16 +69,21 @@ class _ConnectionListState extends State<ConnectionList> {
           ),
           centerTitle: true,
           actions: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 35.0),
-              child: Center(
-                child: Text(
-                  'Skip',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color(0xff0B78FF),
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold),
+            GestureDetector(
+              onTap: () {
+                Application.router.navigateTo(context, Routes.waitingPage);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 35.0),
+                child: Center(
+                  child: Text(
+                    'Skip',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xff0B78FF),
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
@@ -111,49 +117,49 @@ class _ConnectionListState extends State<ConnectionList> {
                                       fontWeight: FontWeight.bold)),
                               onPressed: snapshot.data
                                   ? () {
-                                FocusScope.of(context)
-                                    .requestFocus(FocusNode());
-                                showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: Text(
-                                          'Do you want to send connection request to your social contacts?',
-                                          style: TextStyle(
-                                              height: 1.5,
-                                              fontSize: 17,
-                                              color: Color(0xff162038),
-                                              fontWeight:
-                                              FontWeight.bold),
-                                        ),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text("No",
+                                      FocusScope.of(context)
+                                          .requestFocus(FocusNode());
+                                      showDialog(
+                                          context: context,
+                                          barrierDismissible: false,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                'Do you want to send connection request to your social contacts?',
                                                 style: TextStyle(
-                                                    fontSize: 16,
-                                                    color: Color(
-                                                        0xff5E657E))),
-                                          ),
-                                          FlatButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text("Yes",
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    color:
-                                                    Color(0xff0088FF),
+                                                    height: 1.5,
+                                                    fontSize: 17,
+                                                    color: Color(0xff162038),
                                                     fontWeight:
-                                                    FontWeight.bold)),
-                                          ),
-                                        ],
-                                      );
-                                    });
-                              }
+                                                        FontWeight.bold),
+                                              ),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("No",
+                                                      style: TextStyle(
+                                                          fontSize: 16,
+                                                          color: Color(
+                                                              0xff5E657E))),
+                                                ),
+                                                FlatButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("Yes",
+                                                      style: TextStyle(
+                                                          fontSize: 16,
+                                                          color:
+                                                              Color(0xff0088FF),
+                                                          fontWeight:
+                                                              FontWeight.bold)),
+                                                ),
+                                              ],
+                                            );
+                                          });
+                                    }
                                   : null,
                             );
                           },
@@ -326,15 +332,15 @@ class _ConnectionsListLayoutState extends State<ConnectionsListLayout> {
                           itemCount: contactsList.length,
                           itemBuilder: (BuildContext context, int index) {
                             return snapshot.data == null ||
-                                snapshot.data.isEmpty
+                                    snapshot.data.isEmpty
                                 ? buildListTile(index)
                                 : contactsList[index]
-                                .trim()
-                                .toLowerCase()
-                                .contains(
-                                snapshot.data.trim().toLowerCase())
-                                ? buildListTile(index)
-                                : new Container();
+                                        .trim()
+                                        .toLowerCase()
+                                        .contains(
+                                            snapshot.data.trim().toLowerCase())
+                                    ? buildListTile(index)
+                                    : new Container();
                           });
                     }),
               );
@@ -374,15 +380,15 @@ class _ConnectionsListLayoutState extends State<ConnectionsListLayout> {
       trailing: Container(
         child: selectedNames.contains(contactsList[index])
             ? SvgPicture.asset(
-          'assets/images/checked.svg',
-          height: 20.0,
-          width: 20.0,
-        )
+                'assets/images/checked.svg',
+                height: 20.0,
+                width: 20.0,
+              )
             : SvgPicture.asset(
-          'assets/images/unchecked.svg',
-          height: 20.0,
-          width: 20.0,
-        ),
+                'assets/images/unchecked.svg',
+                height: 20.0,
+                width: 20.0,
+              ),
       ),
     );
   }
